@@ -4,12 +4,13 @@ import os
 import cv2
 import numpy as np
 from segment import segment_input
+from segment_spaces import segmentspaces_input
 import io 
 from fastai.vision import *
 
-
+# ROOT_DIR="D:\\Projects\\OcrKannada\\Application\\"
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = 'D:\\Projects\\OcrKannada\\Application\\static\\Upload'
+# app.config['UPLOAD_FOLDER'] = ROOT_DIR+'static\\Upload'
 app.secret_key = 'asrtarstaursdlarsn'
 #unicode for each dependent vowel
 
@@ -108,15 +109,15 @@ def upload():
             print("No file")
             return render_template('./index.html',result='false',uploaded='false',imagesrc="/static/assets/img/1%20CBkz7f_KjNh_wVuqLp-m0A.png")
         file = request.files['file']
-        # if user does not select file, browser also
-        # submit an empty part without filename
         if file.filename == '':
             return render_template('./index.html',result='false',uploaded='false',imagesrc="/static/assets/img/1%20CBkz7f_KjNh_wVuqLp-m0A.png")
         if file:
             # print("Hello")
             filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            number_files=segment_input(os.path.join(app.config['UPLOAD_FOLDER'], filename),filename.split(".")[0])
+            # file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            file.save("./static/Upload/{}".format(filename))
+            # number_files=segment_input(os.path.join(app.config['UPLOAD_FOLDER'], filename),filename.split(".")[0])
+            number_files=segmentspaces_input("./static/Upload/{}".format(filename),filename.split(".")[0])
             #<HARIS CODE>
             s=''
             # with open('./static/output.txt','w') as outputFile:
@@ -131,6 +132,7 @@ def upload():
                 #img with size 6X9 is a space
                 if img.size[0]==6 and img.size[1]==9:
                     # outputFile.write(' ')
+                    s+=' '
                     print("Skipped: ",i+1)
                     continue
                 
@@ -148,11 +150,6 @@ def upload():
                 except:
                     # outputFile.write('')
                     s+='?'
-            # f = io.open("./static/output.txt", mode="r", encoding="utf-8")
-            # s=f.readlines()
-
-            # for i in s:
-                # print(i)
             print('S: ',s)
             try:
                 return render_template('./index.html',result='true',imagesrc="/static/Upload/{}".format(filename),data=s)
