@@ -1,4 +1,5 @@
 # KannadaOCR
+A Simple Flask Application to convert Handwritten Kannada characters into printed text
 ## Instructions to run Web Application:
 * Environment Setup
   * Open Anaconda Prompt
