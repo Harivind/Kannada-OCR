@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Brand</title>
+    <link rel="stylesheet" href="/static/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
+    <link rel="stylesheet" href="/static/assets/fonts/font-awesome.min.css">
+</head>
+
+<body id="page-top">
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container"><h1><a class="navbar-brand js-scroll-trigger" href="/" style="font-size: larger;">ಕannada ಒCR </a></h1><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler float-right" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+            <div
+                class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"></li>
+                    <li class="nav-item" role="presentation"></li>
+                    <li class="nav-item" role="presentation"></li>
+                </ul>
+        </div>
+        </div>
+    </nav>
+    <header class="masthead" style="background:url('/static/assets/img/bg-pattern.png'), linear-gradient(to left, #7b4397, #dc2430);height:100%;">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-lg-7 my-auto">
+                    <div class="mx-auto header-content">
+                        <h1 class="mb-5">Upload an Image to generate Text</h1>
+                        <form method="POST" enctype="multipart/form-data" action="/upload">
+                            <label for="imageUpload" class="btn btn-outline-warning btn-xl js-scroll-trigger" style="padding-left: 20px;padding-right: 20px;margin: 11px;margin-top: 21px;margin-left: 135px;">Add image</label>
+                            <input type="file" onchange="loadFile(event)" id="imageUpload"name="file" accept="image/*" style="display:none">
+                            <input type='submit' class="btn btn-outline-warning btn-xl js-scroll-trigger" value='Generate Results' style="width: 251px;padding: 13px;margin: 11px;margin-top: 21px;margin-left: 65px;">
+                            {% if uploaded == "false"%}
+                                <h4>Please upload an image</h4>
+                            {% endif %}    
+                        </form>
+                        <!-- <input type="file" style="height: 34px;width: 252px;margin-top: -325px;padding: -15px;margin-left: 28px;">
+                        <a class="btn btn-outline-warning btn-xl js-scroll-trigger" role="button" href="#download"
+                            style="width: 251px;padding: 13px;margin: 11px;margin-top: 21px;">Generate Document</a> -->
+                    </div>
+                </div>
+                <!-- <h1>Results</h1> -->
+                <div class="col">
+                    <img class="d-inline float-left" id="output" src="{{imagesrc}}" width="500px" height="200px" style="margin: 6px;margin-top: 289px;margin-left: -29px;height: 195px;">
+                    {% if result == 'true'%}
+                        <h1>Results</h1>
+                        <!-- @import url(http://fonts.googleapis.com/earlyaccess/notosanskannada.css); -->
+                        <p style="src: url('https://fonts.googleapis.com/css?family=Baloo Tamma');  font-family: Noto Sans Kannada, sans-serif; font-size: 19.0px; line-height: 1.11em;">
+                            {{data}}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </header>
+    <script>
+        var loadFile = function(event) {
+            var image = document.getElementById('output');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
+    </script>
+    <!-- <script src="/static/assets/js/jquery.min.js"></script> -->
+    <script src="/static/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="/static/assets/js/script.min.js"></script>
+</body>
+
+</html>
