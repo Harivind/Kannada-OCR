@@ -34,7 +34,8 @@
                         <form method="POST" enctype="multipart/form-data" action="/upload">
                             <label for="imageUpload" class="btn btn-outline-warning btn-xl js-scroll-trigger" style="padding-left: 20px;padding-right: 20px;margin: 11px;margin-top: 21px;margin-left: 135px;">Add image</label>
                             <input type="file" onchange="loadFile(event)" id="imageUpload"name="file" accept="image/*" style="display:none">
-                            <input type='submit' class="btn btn-outline-warning btn-xl js-scroll-trigger" value='Generate Results' style="width: 251px;padding: 13px;margin: 11px;margin-top: 21px;margin-left: 65px;">
+                            <input type='submit' class="btn btn-outline-warning btn-xl js-scroll-trigger" name="action" value="Generate Results" style="width: 251px;padding: 13px;margin: 11px;margin-top: 21px;margin-left: 65px;">
+                            <input type='submit' class="btn btn-outline-warning btn-xl js-scroll-trigger" name= "action" value="Download pdf" style="width: 251px;padding: 13px;margin: 11px;margin-top: 21px;margin-left: 65px;">
                             {% if uploaded == "false"%}
                                 <h4>Please upload an image</h4>
                             {% endif %}    

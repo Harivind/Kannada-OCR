@@ -1,4 +1,4 @@
-from flask import Flask, render_template,flash, request, redirect, url_for
+from flask import Flask, render_template,flash, request, redirect, url_for,make_response,render_template
 from werkzeug.utils import secure_filename
 import os
 import cv2
@@ -7,13 +7,22 @@ from segment import segment_input
 from segment_spaces import segmentspaces_input
 import io 
 from fastai.vision import *
+from fpdf import FPDF 
 
 # ROOT_DIR="D:\\Projects\\OcrKannada\\Application\\"
 app = Flask(__name__)
 # app.config['UPLOAD_FOLDER'] = ROOT_DIR+'static\\Upload'
 app.secret_key = 'asrtarstaursdlarsn'
 #unicode for each dependent vowel
-
+pdf = FPDF() 
+  
+# Add a page 
+pdf.add_page() 
+  
+# set style and size of font  
+# that you want in the pdf 
+pdf.add_font('kedage', '', 'kedage-b.ttf', uni=True) 
+pdf.set_font('kedage', '', 14)
 learn = load_learner('./')
 
 matraUnicode={
@@ -151,10 +160,23 @@ def upload():
                     # outputFile.write('')
                     s+='?'
             print('S: ',s)
-            try:
-                return render_template('./index.html',result='true',imagesrc="/static/Upload/{}".format(filename),data=s)
-            except:
-                return render_template('./index.html',result='true',imagesrc="/static/Upload/{}".format(filename))
+            pdf.write(8,s)
+            pdf.ln(20)
+            print(request.form.getlist('action'))
+            if 'Download pdf' in request.form.getlist('action'):
+
+            
+                response = make_response(pdf.output(dest='S').encode('latin-1')) 
+                response.headers['Content-Type'] = 'application/pdf'
+                
+                response.headers['Content-Disposition'] = 'attachment; filename=GFG.pdf'
+                return response
+            else:
+                try:
+                    return render_template('./index.html',result='true',imagesrc="/static/Upload/{}".format(filename),data=s)
+                    
+                except:
+                    return render_template('./index.html',result='true',imagesrc="/static/Upload/{}".format(filename))
 
 if __name__ == '__main__':
    app.run(debug=True)
