@@ -12,3 +12,7 @@ A Simple Flask Application to convert Handwritten Kannada characters into printe
 * To run the application:
 
       python app.py
+
+## Website Screenshots
+![index.html](./website-images/1.png?raw=true )
+![Results](./website-images/2.png?raw=true "Results")

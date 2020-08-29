@@ -1,0 +1,79 @@
+bandit==1.6.2
+beautifulsoup4==4.9.1
+blis==0.4.1
+Bottleneck==1.3.2
+brotlipy==0.7.0
+catalogue==1.0.0
+certifi==2020.6.20
+cffi==1.14.0
+chardet==3.0.4
+click==7.1.2
+colorama==0.4.3
+cryptography==2.9.2
+cycler==0.10.0
+cymem==2.0.2
+cytoolz==0.9.0.1
+dill==0.2.9
+fastai @ git+https://github.com/fastai/fastai.git@1a6dd1655bee451c25f79dfba6d22c14cb19bcc0
+fastprogress @ file:///home/jhoward/anaconda3/conda-bld/fastprogress_1597084392729/work
+Flask==1.1.2
+fpdf==1.7.2
+future==0.18.2
+gitdb==4.0.5
+GitPython==3.1.2
+idna @ file:///tmp/build/80754af9/idna_1593446292537/work
+implicit==0.3.7
+importlib-metadata==1.7.0
+itsdangerous==1.1.0
+Jinja2==2.11.2
+kiwisolver==1.2.0
+MarkupSafe==1.1.1
+matplotlib @ file:///C:/ci/matplotlib-base_1592846084747/work
+mkl-fft==1.0.6
+mkl-random==1.0.1
+msgpack==0.6.1
+msgpack-numpy==0.4.3.2
+murmurhash==1.0.2
+numexpr==2.6.8
+numpy==1.15.4
+nvidia-ml-py3==7.352.0
+olefile==0.46
+opencv-python==4.3.0.38
+packaging==20.4
+pandas @ file:///C:/ci/pandas_1596824386248/work
+pbr==5.4.5
+Pillow @ file:///C:/ci/pillow_1594298234712/work
+plac @ file:///C:/ci/plac_1594257364512/work
+preshed==3.0.2
+pycparser @ file:///tmp/build/80754af9/pycparser_1594388511720/work
+pyOpenSSL @ file:///tmp/build/80754af9/pyopenssl_1594392929924/work
+pyparsing==2.4.7
+pyreadline==2.1
+PySocks @ file:///C:/ci/pysocks_1594394709107/work
+python-dateutil==2.8.1
+pytz==2020.1
+PyYAML==5.3.1
+regex==2018.8.29
+requests @ file:///tmp/build/80754af9/requests_1592841827918/work
+scipy==1.1.0
+six==1.15.0
+smmap==3.0.4
+soupsieve==2.0.1
+spacy==2.3.2
+srsly==1.0.2
+stevedore==1.32.0
+TBB==0.1
+thinc==7.4.1
+toolz==0.10.0
+torch==1.6.0
+torchvision==0.7.0
+tornado==6.0.4
+tqdm @ file:///tmp/build/80754af9/tqdm_1596810128862/work
+ujson @ file:///C:/ci/ujson_1592432585163/work
+urllib3 @ file:///tmp/build/80754af9/urllib3_1597086586889/work
+wasabi==0.7.1
+Werkzeug==1.0.1
+win-inet-pton==1.1.0
+wincertstore==0.2
+wrapt==1.10.11
+zipp==3.1.0
