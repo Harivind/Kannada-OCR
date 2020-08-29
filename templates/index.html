@@ -34,8 +34,7 @@
                         <form method="POST" enctype="multipart/form-data" action="/upload">
                             <label for="imageUpload" class="btn btn-outline-warning btn-xl js-scroll-trigger" style="padding-left: 20px;padding-right: 20px;margin: 11px;margin-top: 21px;margin-left: 135px;">Add image</label>
                             <input type="file" onchange="loadFile(event)" id="imageUpload"name="file" accept="image/*" style="display:none">
-                            <input type='submit' class="btn btn-outline-warning btn-xl js-scroll-trigger" name="action" value="Generate Results" style="width: 251px;padding: 13px;margin: 11px;margin-top: 21px;margin-left: 65px;">
-                            <input type='submit' class="btn btn-outline-warning btn-xl js-scroll-trigger" name= "action" value="Download pdf" style="width: 251px;padding: 13px;margin: 11px;margin-top: 21px;margin-left: 65px;">
+                            <input type='submit' class="btn btn-outline-warning btn-xl js-scroll-trigger" value='Generate Results' style="width: 251px;padding: 13px;margin: 11px;margin-top: 21px;margin-left: 65px;">
                             {% if uploaded == "false"%}
                                 <h4>Please upload an image</h4>
                             {% endif %}    
@@ -47,17 +46,86 @@
                 </div>
                 <!-- <h1>Results</h1> -->
                 <div class="col">
-                    <img class="d-inline float-left" id="output" src="{{imagesrc}}" width="500px" height="200px" style="margin: 6px;margin-top: 289px;margin-left: -29px;height: 195px;">
+                    <img class="d-inline float-left" id="output" src="{{imagesrc}}" width="500px" height="200px" style="margin: 6px;margin-top: 159px;margin-left: -29px;height: 195px;">
                     {% if result == 'true'%}
-                        <h1>Results</h1>
+                        <h1>Segmented Images</h1>
+                        <div style="text-align: center;">   
+                            <button class="btn btn-outline-warning btn-xl js-scroll-trigger" id="prevbutton" onclick="goPrevious()" style="margin-right:10px;padding-left: 20px;padding-right: 20px">
+                                <span>&#8592;</span>
+                            </button>
+                            
+                            <!-- <a class="previous round" onclick="goPrevious()" style="">&#8249;</a> -->
+                            <img  id="outputchar" src="/static/images/{{filename}}line1c1.png" width="100px"
+                            height="100px">
+                            <button class="btn btn-outline-warning btn-xl js-scroll-trigger" id="nextbutton" onclick="goNext()" style="margin-left:10px;padding-left: 20px;padding-right: 20px">
+                                <span>&#8594;</span> 
+                            </button>
+                            <br>
+                            <h3 id="predChar" style="margin-top: 10px;"> 
+                                <!-- style="src: url('https://fonts.googleapis.com/css?family=Baloo Tamma');   -->
+                                <!-- /* font-family: Noto Sans Kannada, sans-serif; font-size: 19.0px; line-height: 1.11em;">. */ -->
+                            </h3>
+                            <script type='text/javascript'>
+
+                                    var files = {{ numfiles | tojson }};
+                                    var chars = {{ charspred | tojson }};
+                                    files= files['files']
+                                    chars = chars['chars']
+                                    console.log(chars);
+                                    console.log(files)
+                                    
+                                    var initial = 0;
+                                    var image = document.getElementById('outputchar')
+                                    image.src=files[initial];
+                                    var head= document.getElementById('predChar')
+                                    head.innerHTML = chars[initial]
+
+
+                                function goNext(){
+
+                                    var image = document.getElementById('outputchar')
+                                    initial = (initial+1) % files.length;
+                                    image.src=files[initial];
+                                    var head= document.getElementById('predChar')
+                                    head.innerHTML = chars[initial]
+                                    console.log(chars[initial])
+                                    console.log(image.src)
+                                    // console.log(arr[0])
+                                }
+
+                                function goPrevious(){
+                                    var image = document.getElementById('outputchar')
+                                    initial = initial -1;
+                                    if(initial<0){
+                                        initial = files.length -1 ;
+                                    }
+                                    image.src=files[initial];
+                                    var head= document.getElementById('predChar')
+                                    head.innerHTML = chars[initial]
+                        
+                                }
+                            </script>
+                        </div> 
+                         <!-- style="margin: 6px;margin-top: 289px;margin-left: -29px;height: 195px;"> -->
+
                         <!-- @import url(http://fonts.googleapis.com/earlyaccess/notosanskannada.css); -->
-                        <p style="src: url('https://fonts.googleapis.com/css?family=Baloo Tamma');  font-family: Noto Sans Kannada, sans-serif; font-size: 19.0px; line-height: 1.11em;">
-                            {{data}}</p>
+                        <!-- <p style="src: url('https://fonts.googleapis.com/css?family=Baloo Tamma');  font-family: Noto Sans Kannada, sans-serif; font-size: 19.0px; line-height: 1.11em;"> -->
+                            <!-- {{data}} -->
+                            <!-- <embed src="/static/FinalPDF.pdf" width="500px" height="500px" /> -->
+                        <!-- </p> -->
                     {% endif %}
                 </div>
             </div>
         </div>
     </header>
+    {% if result == 'true' %}
+
+    {% endif %}
+    {% if openpdf == 'true' %}
+    <script>
+        window.open('/static/Output/'+'{{filename}}'+'.pdf')
+    </script>
+    {% endif %}
     <script>
         var loadFile = function(event) {
             var image = document.getElementById('output');

@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-def segmentspaces_input(PATH,filename):
+def segmentspaces_input(PATH,filename,linenum):
     # Insert location of image here
     image = cv2.imread(PATH)
     ret,image = cv2.threshold(image,220,255,cv2.THRESH_BINARY)
@@ -99,12 +99,15 @@ def segmentspaces_input(PATH,filename):
                 # cv2_imshow(temp1)
                 flag=1
         cropp= image[stpt[1]:endpt[1], stpt[0]:endpt[0]]
+        chkEmpty=cropp.shape[0]*cropp.shape[1]
         color = [255, 255, 255]
         pad=100
+        if chkEmpty<1000:
+            continue
         new_im = cv2.copyMakeBorder(cropp, pad, pad, pad, pad, cv2.BORDER_CONSTANT,value=color)
         c+=1
-        cv2.imwrite("./images/{}c{}.png".format(filename,c), new_im)
+        cv2.imwrite("./static/images/{}line{}c{}.png".format(filename,linenum,c), new_im)
         if flag==1:
             c+=1
-            cv2.imwrite("./images/{}c{}.png".format(filename,c), temp1)
+            cv2.imwrite("./static/images/{}line{}c{}.png".format(filename,linenum,c), temp1)
     return c
