@@ -25,7 +25,7 @@ idna @ file:///tmp/build/80754af9/idna_1593446292537/work
 implicit==0.3.7
 importlib-metadata==1.7.0
 itsdangerous==1.1.0
-Jinja2==2.11.2
+Jinja2==2.11.3
 kiwisolver==1.2.0
 MarkupSafe==1.1.1
 matplotlib @ file:///C:/ci/matplotlib-base_1592846084747/work
