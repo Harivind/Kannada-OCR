@@ -65,7 +65,7 @@ stevedore==1.32.0
 TBB==0.1
 thinc==7.4.1
 toolz==0.10.0
-torch==1.6.0
+torch==1.13.1
 torchvision==0.7.0
 tornado==6.0.4
 tqdm @ file:///tmp/build/80754af9/tqdm_1596810128862/work
