@@ -20,7 +20,7 @@ Flask==1.1.2
 fpdf==1.7.2
 future==0.18.2
 gitdb==4.0.5
-GitPython==3.1.2
+GitPython==3.1.30
 idna @ file:///tmp/build/80754af9/idna_1593446292537/work
 implicit==0.3.7
 importlib-metadata==1.7.0
