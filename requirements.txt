@@ -18,7 +18,7 @@ fastai @ git+https://github.com/fastai/fastai.git@1a6dd1655bee451c25f79dfba6d22c
 fastprogress @ file:///home/jhoward/anaconda3/conda-bld/fastprogress_1597084392729/work
 Flask==1.1.2
 fpdf==1.7.2
-future==0.18.2
+future==0.18.3
 gitdb==4.0.5
 GitPython==3.1.2
 idna @ file:///tmp/build/80754af9/idna_1593446292537/work
