@@ -72,7 +72,7 @@ tqdm @ file:///tmp/build/80754af9/tqdm_1596810128862/work
 ujson @ file:///C:/ci/ujson_1592432585163/work
 urllib3 @ file:///tmp/build/80754af9/urllib3_1597086586889/work
 wasabi==0.7.1
-Werkzeug==1.0.1
+Werkzeug==2.2.3
 win-inet-pton==1.1.0
 wincertstore==0.2
 wrapt==1.10.11
