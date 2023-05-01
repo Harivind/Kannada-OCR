@@ -16,7 +16,7 @@ cytoolz==0.9.0.1
 dill==0.2.9
 fastai @ git+https://github.com/fastai/fastai.git@1a6dd1655bee451c25f79dfba6d22c14cb19bcc0
 fastprogress @ file:///home/jhoward/anaconda3/conda-bld/fastprogress_1597084392729/work
-Flask==1.1.2
+Flask==2.3.2
 fpdf==1.7.2
 future==0.18.2
 gitdb==4.0.5
